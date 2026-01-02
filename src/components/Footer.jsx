@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Github, Twitter, Mail } from 'lucide-react';
 
 export const Footer = () => {
@@ -9,9 +10,9 @@ export const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <img 
-                src="https://imagedelivery.net/j_zap_BNzPItCoMGioj9aA/f6179843-5145-4563-d5aa-6e4690ae9a00/public" 
-                alt="Rest Now" 
+              <img
+                src="https://imagedelivery.net/j_zap_BNzPItCoMGioj9aA/f6179843-5145-4563-d5aa-6e4690ae9a00/public"
+                alt="Rest Now"
                 className="h-8 w-auto"
               />
               <span className="text-xl font-semibold">Rest Now</span>
@@ -30,6 +31,14 @@ export const Footer = () => {
           <p className="text-sm text-muted-foreground">
             © 2025 Rest Now. Made with ❤️ for healthier screen habits.
           </p>
+          <div className="flex gap-6 text-sm">
+            <Link
+              to="/privacy-policy"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Privacy Policy
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
