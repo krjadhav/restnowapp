@@ -117,7 +117,7 @@ export const PrivacyPolicy = () => {
           <span style={{fontSize: '15px'}}>
             <span style={{color: 'rgb(127, 127, 127)'}}>
               <span data-custom-class="body_text">
-                <strong>Questions or concerns? </strong>Reading this Privacy Notice will help you understand your privacy rights and choices. We are responsible for making decisions about how your personal information is processed. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us at <a target="_blank" data-custom-class="link" href="mailto:kjadhav@uci.edu">kjadhav@uci.edu</a>.
+                <strong>Questions or concerns? </strong>Reading this Privacy Notice will help you understand your privacy rights and choices. We are responsible for making decisions about how your personal information is processed. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us at <a target="_blank" data-custom-class="link" href="mailto:j@dhav.me">j@dhav.me</a>.
               </span>
             </span>
           </span>
