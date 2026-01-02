@@ -46,7 +46,7 @@ export const AppShowcase = () => {
             <CardContent className="p-0">
               <div className="aspect-square relative overflow-hidden bg-gradient-deep">
                 <img
-                  src="https://imagedelivery.net/j_zap_BNzPItCoMGioj9aA/31ace15e-f0d3-4b5a-6324-48cc550b5500/public"
+                  src="https://imagedelivery.net/j_zap_BNzPItCoMGioj9aA/956ebf8e-6846-4348-7dff-bd71c100d000/public"
                   alt="Rest Now Settings"
                   className="w-full h-full object-contain p-8"
                 />
