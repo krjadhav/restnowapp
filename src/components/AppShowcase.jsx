@@ -27,9 +27,9 @@ export const AppShowcase = () => {
             <CardContent className="p-0">
               <div className="aspect-square relative overflow-hidden bg-gradient-deep">
                 <img
-                  src="https://imagedelivery.net/j_zap_BNzPItCoMGioj9aA/ae2989f3-c83b-40a7-496a-73e0c1f7b900/public"
+                  src="https://imagedelivery.net/j_zap_BNzPItCoMGioj9aA/09c4411e-231b-4173-4d86-9b696022b800/public"
                   alt="Rest Now Break Notification"
-                  className="w-full h-full object-contain p-8"
+                  className="w-full h-full object-contain p-3"
                 />
               </div>
               <div className="p-6 space-y-2">
@@ -46,9 +46,9 @@ export const AppShowcase = () => {
             <CardContent className="p-0">
               <div className="aspect-square relative overflow-hidden bg-gradient-deep">
                 <img
-                  src="https://imagedelivery.net/j_zap_BNzPItCoMGioj9aA/956ebf8e-6846-4348-7dff-bd71c100d000/public"
+                  src="https://imagedelivery.net/j_zap_BNzPItCoMGioj9aA/512cb704-45ca-46fe-6151-cc74bf47f000/public"
                   alt="Rest Now Settings"
-                  className="w-full h-full object-contain p-8"
+                  className="w-full h-full object-contain p-3"
                 />
               </div>
               <div className="p-6 space-y-2">
@@ -65,9 +65,9 @@ export const AppShowcase = () => {
             <CardContent className="p-0">
               <div className="aspect-square relative overflow-hidden bg-gradient-deep">
                 <img
-                  src="https://imagedelivery.net/j_zap_BNzPItCoMGioj9aA/887ce524-ffe5-4187-2095-bf0d58b05e00/public"
+                  src="https://imagedelivery.net/j_zap_BNzPItCoMGioj9aA/813d1dec-dfb4-4ff5-56aa-4b4d2088b500/public"
                   alt="Rest Now Menu Bar"
-                  className="w-full h-full object-contain p-8"
+                  className="w-full h-full object-contain p-3"
                 />
               </div>
               <div className="p-6 space-y-2">

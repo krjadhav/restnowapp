@@ -1,15 +1,74 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Copy, Check } from 'lucide-react';
 
 export const Hero = () => {
   const [copied, setCopied] = useState(false);
   const installCommand = 'brew install --cask krjadhav/restnow/restnow';
 
+  const BREAK_SECONDS = 5;
+  const BREAK_END_IMAGE_URL = 'https://imagedelivery.net/j_zap_BNzPItCoMGioj9aA/6f8bd78c-cbc4-4efd-1459-5c0818367000/public';
+
+  const [previewCycle, setPreviewCycle] = useState(0);
+  const [previewPhase, setPreviewPhase] = useState('countdown');
+  const [visibleStep, setVisibleStep] = useState(-1);
+  const [secondsLeft, setSecondsLeft] = useState(BREAK_SECONDS);
+
+  const formatTime = (totalSeconds) => {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  };
+
   const handleCopy = async () => {
     await navigator.clipboard.writeText(installCommand);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+
+  const handleSkipBreak = () => {
+    setPreviewPhase('image');
+  };
+
+  useEffect(() => {
+    setPreviewPhase('countdown');
+    setSecondsLeft(BREAK_SECONDS);
+    setVisibleStep(-1);
+
+    const t0 = setTimeout(() => setVisibleStep(0), 200);
+    const t1 = setTimeout(() => setVisibleStep(1), 900);
+    const t2 = setTimeout(() => setVisibleStep(2), 1600);
+    const t3 = setTimeout(() => setVisibleStep(3), 2300);
+
+    return () => {
+      clearTimeout(t0);
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+    };
+  }, [previewCycle]);
+
+  useEffect(() => {
+    if (previewPhase !== 'countdown') return;
+    if (visibleStep < 2) return;
+
+    const intervalId = setInterval(() => {
+      setSecondsLeft((s) => (s > 0 ? s - 1 : 0));
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [previewPhase, previewCycle, visibleStep]);
+
+  useEffect(() => {
+    if (previewPhase !== 'countdown') return;
+    if (secondsLeft !== 0) return;
+    setPreviewPhase('image');
+  }, [previewPhase, secondsLeft]);
+
+  useEffect(() => {
+    if (previewPhase !== 'image') return;
+    const t = setTimeout(() => setPreviewCycle((c) => c + 1), 1800);
+    return () => clearTimeout(t);
+  }, [previewPhase]);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
@@ -82,24 +141,56 @@ export const Hero = () => {
           </div>
 
 
-          <div className="relative w-full max-w-4xl mx-auto">
-            <div className="relative rounded-2xl overflow-hidden shadow-medium">
+          <div className="relative isolate w-full max-w-4xl mx-auto">
+            <div className="relative z-10 rounded-2xl overflow-hidden shadow-medium">
               <div className="w-full aspect-video bg-black rounded-2xl flex flex-col items-center justify-center relative">
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-purple-600/30 blur-3xl rounded-full" />
-                <div className="relative z-10 flex flex-col items-center space-y-4">
-                  <h2 className="text-2xl sm:text-3xl font-bold text-white">Rest Now</h2>
-                  <p className="text-gray-400 text-sm sm:text-base">Take a break. Stand up. Stretch.</p>
-                  <div className="text-5xl sm:text-6xl font-light text-white tracking-wider mt-2">
-                    00:05
+                {previewPhase === 'countdown' ? (
+                  <div className="relative z-10 flex flex-col items-center space-y-4">
+                    <h2
+                      className={`text-2xl sm:text-3xl font-bold text-white transition-opacity transition-transform duration-1000 ease-out ${
+                        visibleStep >= 0 ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'
+                      }`}
+                    >
+                      Rest Now
+                    </h2>
+                    <p
+                      className={`text-gray-400 text-sm sm:text-base transition-opacity duration-1000 ${
+                        visibleStep >= 1 ? 'opacity-100' : 'opacity-0'
+                      }`}
+                    >
+                      Take a break. Stand up. Stretch.
+                    </p>
+                    <div
+                      className={`text-5xl sm:text-6xl font-light text-white tracking-wider mt-2 transition-opacity duration-1000 ${
+                        visibleStep >= 2 ? 'opacity-100' : 'opacity-0'
+                      }`}
+                    >
+                      {formatTime(secondsLeft)}
+                    </div>
+                    <button
+                      type="button"
+                      onClick={handleSkipBreak}
+                      className={`mt-4 flex items-center gap-2 px-4 py-2 rounded-full border border-gray-600 text-gray-300 text-sm transition-opacity transition-transform duration-1000 ease-out ${
+                        visibleStep >= 3
+                          ? 'opacity-100 translate-y-0'
+                          : 'opacity-0 translate-y-2 pointer-events-none'
+                      }`}
+                    >
+                      Skip Break
+                    </button>
                   </div>
-                  <button className="mt-4 flex items-center gap-2 px-4 py-2 rounded-full border border-gray-600 text-gray-300 text-sm">
-                    Skip Break
-                  </button>
-                </div>
+                ) : (
+                  <img
+                    src={BREAK_END_IMAGE_URL}
+                    alt="Rest Now Break"
+                    className="relative z-10 w-full h-full object-cover animate-in fade-in-0 duration-1000"
+                  />
+                )}
               </div>
             </div>
 
-            <div className="hidden lg:block absolute -bottom-8 lg:-left-16 lg:w-80 rounded-xl overflow-hidden shadow-glow border-2 border-primary/20">
+            <div className="hidden lg:block absolute z-20 -bottom-8 lg:-left-16 lg:w-80 rounded-xl overflow-hidden shadow-glow border-2 border-primary/20 pointer-events-none">
               <img
                 src="https://imagedelivery.net/j_zap_BNzPItCoMGioj9aA/956ebf8e-6846-4348-7dff-bd71c100d000/public"
                 alt="Rest Now Break Notification"
@@ -107,7 +198,7 @@ export const Hero = () => {
               />
             </div>
 
-            <div className="hidden lg:block absolute -top-6 lg:-right-12 lg:w-72 rounded-xl overflow-hidden shadow-medium border border-border">
+            <div className="hidden lg:block absolute z-20 -top-6 lg:-right-12 lg:w-72 rounded-xl overflow-hidden shadow-medium border border-border pointer-events-none">
               <img
                 src="https://imagedelivery.net/j_zap_BNzPItCoMGioj9aA/31ace15e-f0d3-4b5a-6324-48cc550b5500/public"
                 alt="Rest Now Settings"
