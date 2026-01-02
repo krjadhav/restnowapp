@@ -9,7 +9,7 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/restnowapp">
       <div className="min-h-screen">
         <Navigation />
         <main>
