@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark Mode - Deep Calm Purple Palette */
+    --background: 260 30% 8%;
+    --foreground: 0 0% 95%;
+    
+    /* Primary: Deep Purple - Calm, focus-oriented */
+    --primary: 255 60% 62%;
+    --primary-foreground: 260 30% 8%;
+    --primary-glow: 255 70% 72%;
+    
+    /* Secondary: Dark Lavender - Gentle, supportive */
+    --secondary: 260 35% 18%;
+    --secondary-foreground: 260 40% 85%;
+    
+    /* Accent: Deep Indigo - Rich, sophisticated */
+    --accent: 245 60% 62%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Neutral tones */
+    --muted: 260 25% 16%;
+    --muted-foreground: 260 10% 60%;
+    
+    --card: 260 30% 11%;
+    --card-foreground: 0 0% 95%;
+    
+    --popover: 260 30% 11%;
+    --popover-foreground: 0 0% 95%;
+    
+    --border: 260 25% 20%;
+    --input: 260 25% 20%;
+    --ring: 255 60% 62%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    /* Custom gradients - Deep purple, dark mode optimized */
+    --gradient-hero: linear-gradient(135deg, hsl(255 60% 35% / 0.2), hsl(245 70% 40% / 0.18));
+    --gradient-feature: linear-gradient(180deg, hsl(260 30% 8%), hsl(260 30% 11%));
+    --gradient-accent: linear-gradient(135deg, hsl(255 60% 62%), hsl(245 60% 62%));
+    --gradient-soft: linear-gradient(180deg, hsl(260 35% 18% / 0.4), transparent);
+    --gradient-deep: linear-gradient(135deg, hsl(255 65% 40%), hsl(245 70% 45%));
+    
+    /* Shadows - Deeper shadows for dark mode */
+    --shadow-soft: 0 2px 8px -2px hsl(0 0% 0% / 0.4);
+    --shadow-medium: 0 4px 16px -4px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 0 32px hsl(255 60% 55% / 0.3);
+    
+    /* Animations */
+    --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    --radius: 0.75rem;
+  }
+  
+  .dark {
+    --background: 260 30% 8%;
+    --foreground: 0 0% 95%;
+    
+    --primary: 255 60% 62%;
+    --primary-foreground: 260 30% 8%;
+    --primary-glow: 255 70% 72%;
+    
+    --secondary: 260 35% 18%;
+    --secondary-foreground: 260 40% 85%;
+    
+    --accent: 245 60% 62%;
+    --accent-foreground: 0 0% 100%;
+    
+    --muted: 260 25% 16%;
+    --muted-foreground: 260 10% 60%;
+    
+    --card: 260 30% 11%;
+    --card-foreground: 0 0% 95%;
+    
+    --popover: 260 30% 11%;
+    --popover-foreground: 0 0% 95%;
+    
+    --border: 260 25% 20%;
+    --input: 260 25% 20%;
+    --ring: 255 60% 62%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --gradient-hero: linear-gradient(135deg, hsl(255 60% 35% / 0.2), hsl(245 70% 40% / 0.18));
+    --gradient-feature: linear-gradient(180deg, hsl(260 30% 8%), hsl(260 30% 11%));
+    --shadow-soft: 0 2px 8px -2px hsl(0 0% 0% / 0.4);
+    --shadow-medium: 0 4px 16px -4px hsl(0 0% 0% / 0.5);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 600;
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .bg-gradient-feature {
+    background: var(--gradient-feature);
+  }
+  
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Remove spinner from number inputs */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
