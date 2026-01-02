@@ -73,7 +73,14 @@ export const Hero = () => {
                 <span>Lightweight</span>
               </div>
             </div>
+            {/* Product Hunt Badge */}
+            <div className="flex justify-center mb-12">
+              <a href="https://www.producthunt.com/products/rest-now-screen-break-timer?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-rest-now-screen-break-timer" target="_blank" rel="noopener noreferrer">
+                <img alt="Rest Now - Screen Break Timer - Lightweight screen break timer for macOS | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1057378&theme=dark&t=1767370990020" />
+              </a>
+            </div>
           </div>
+
 
           <div className="relative w-full max-w-4xl mx-auto">
             <div className="relative rounded-2xl overflow-hidden shadow-medium">
